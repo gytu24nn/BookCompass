@@ -1,7 +1,7 @@
 const Affärsplan = () => {
     return(
         <>
-            <h1>Affärsplan</h1>
+            <h3>Affärsplan</h3>
         </>
     )
 }
