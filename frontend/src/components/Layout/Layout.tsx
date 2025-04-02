@@ -5,6 +5,9 @@ const Layout = () => {
         <>
             <div>
                 <header>
+                    <div>
+                        <h1>BookCompass</h1>
+                    </div>
                     <nav>
                         <Link to="/">Home</Link>
                         <Link to="/affärsplan">Affärsplan</Link>

@@ -1,7 +1,7 @@
 const Inspiration = () => {
     return(
         <>
-            <h1>Inspiration</h1>
+            <h3>Inspiration</h3>
         </>
     )
 }

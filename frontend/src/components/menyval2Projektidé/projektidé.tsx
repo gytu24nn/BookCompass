@@ -1,7 +1,7 @@
 const Projektidé = () => {
     return(
         <>
-            <h1>ProjektIdé</h1>
+            <h3>ProjektIdé</h3>
         </>
     )
 }
