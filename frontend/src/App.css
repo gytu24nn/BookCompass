@@ -55,7 +55,7 @@ main {
 }
 
 /*Design för affärsplans vy 1:*/
-.affarsplan-container {
+.affarsplan-container, .projektidé-container {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
@@ -65,7 +65,7 @@ main {
   margin-top: 2em;
 }
 
-.affarsplan-container h3 {
+.affarsplan-container h3, .projektidé-container h3 {
   font-family: "Oswald", sans-serif;
   font-size: 32px;
   color: #462F20;
@@ -74,7 +74,7 @@ main {
   background-color: whitesmoke;
 }
 
-.affarsplan-container p {
+.affarsplan-container p, .projektidé-container p {
   font-family: "Oswald", sans-serif;
   font-size: 18px;
   line-height: 1.6;
