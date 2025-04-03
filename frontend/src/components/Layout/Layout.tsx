@@ -5,14 +5,12 @@ const Layout = () => {
         <>
             <div>
                 <header>
-                    <div>
-                        <h1>BookCompass</h1>
-                    </div>
-                    <nav>
-                        <Link to="/">Home</Link>
-                        <Link to="/affärsplan">Affärsplan</Link>
-                        <Link to="/projektidé">Projektidé</Link>
-                        <Link to="/inspiration">Inspiration</Link>
+                    <h1 id="headerFont"><i className="fa-solid fa-book"></i>BookCompass</h1>
+                    <nav id="menyOptions">
+                        <Link className="menuOption" to="/"><i className="fa-solid fa-house"></i>Home</Link>
+                        <Link className="menuOption" to="/affärsplan"><i className="fa-solid fa-coins"></i>Affärsplan</Link>
+                        <Link className="menuOption" to="/projektidé"><i className="fa-solid fa-lightbulb"></i>Projektidé</Link>
+                        <Link className="menuOption" to="/inspiration"><i className="fa-solid fa-paintbrush"></i>Inspiration</Link>
                     </nav>
                 </header>
 
@@ -27,7 +25,6 @@ const Layout = () => {
                         <p>© 2025 BookCompass</p>
                     </footer>
                 </div>
-
 
             </div>
         </>
