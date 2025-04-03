@@ -5,14 +5,21 @@
   box-sizing: border-box; 
 }
 
+
 body {
-  width: 100%;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Se till att hela sidan tar upp hela fönstret */
   color: #462F20; /* Mörkbrun text */
-  font-family: "Oswald", sans-serif;
+}
+
+main {
+  flex: 1; /* Gör att main växer och trycker ner footern */
+  height: 100%
 }
 
 
+/*Design för meny*/
 .menuOption {
   background:   #725046;
   color: #FFF8F0;
@@ -40,6 +47,47 @@ body {
   background-color: #462F20;
 }
 
+#menyOptions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/*Design för affärsplans vy 1:*/
+.affarsplan-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+  margin-top: 2em;
+}
+
+.affarsplan-container h3 {
+  font-family: "Oswald", sans-serif;
+  font-size: 32px;
+  color: #462F20;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: whitesmoke;
+}
+
+.affarsplan-container p {
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #462F20;
+  text-align: justify;
+  background-color: whitesmoke;
+}
+
+/* .affarsplan-container p br {
+  display: none;
+} */
+
+/*Design för header*/
 #headerFont {
   font-family: "Jua", sans-serif;
   font-weight: 400;
@@ -65,14 +113,51 @@ header {
   position: relative;
 }
 
-#menyOptions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-grow: 1;
-}
-
+/*Design för footer*/
 footer {
   text-align: center;
-  padding: 20px ;
+  color: #462F20;
+  padding: 10px 0;
+  font-size: 14px;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  background-color: #dec1b1;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 100%;
+  margin: auto;
+  padding: 5px 20px;
+}
+
+.footer-section {
+  flex: 1;
+  text-align: start;
+  
+}
+
+.footer-section p {
+  font-size: 14px;
+  color: #462F20;
+  line-height: 1.4;
+}
+
+.footer-section h2 {
+  
+  font-size: 16px;
+  color: #462F20;
+  margin-bottom: 5px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px 0;
+  font-size: 12px;
+  color: #462F20;
+  border-top: 2px solid #ddd;
 }
