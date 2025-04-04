@@ -1,3 +1,4 @@
+import affärsplanen from '../../img/Affärsplan bookcompass 27mars.pdf'
 const Affärsplan = () => {
     return(
         <div className="affarsplan-container">
