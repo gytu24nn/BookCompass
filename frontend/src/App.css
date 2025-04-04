@@ -5,17 +5,19 @@
   box-sizing: border-box; 
 }
 
-
 body {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh; /* Se till att hela sidan tar upp hela fönstret */
   color: #462F20; /* Mörkbrun text */
 }
 
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 main {
   flex: 1; /* Gör att main växer och trycker ner footern */
-  height: 100%
 }
 
 
@@ -83,10 +85,6 @@ main {
   background-color: whitesmoke;
 }
 
-/* .affarsplan-container p br {
-  display: none;
-} */
-
 /*Design för header*/
 #headerFont {
   font-family: "Jua", sans-serif;
@@ -124,6 +122,7 @@ footer {
   bottom: 0;
   background-color: #dec1b1;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
+  margin-top: auto;
 }
 
 .footer-container {
@@ -156,7 +155,7 @@ footer {
 
 .footer-bottom {
   text-align: center;
-  padding-top: 10px 0;
+  padding-top: 10px;
   font-size: 12px;
   color: #462F20;
   border-top: 2px solid #ddd;
