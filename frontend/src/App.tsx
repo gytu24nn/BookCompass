@@ -4,6 +4,7 @@ import Layout from './components/Layout/Layout';
 import Affärsplan from './components/menyval1Affärsplanen/Affärsplanen';
 import Projektidé from './components/menyval2Projektidé/projektidé';
 import Inspiration from './components/menyval3Insperation/Inspiration';
+import CreateAccount from "./components/CreateAccount/CreateAccount";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
               <Route path='affärsplan' element={<Affärsplan />} />
               <Route path='projektidé' element={<Projektidé />} />
               <Route path='inspiration' element={<Inspiration />} />
+              <Route path="create-account" element={<CreateAccount />} />
             </Route>
           </Routes>
         </Router>

@@ -20,6 +20,9 @@ const Layout = () => {
             <Link className="menuOption" to="/inspiration">
               <i className="fa-solid fa-paintbrush"></i>Inspiration
             </Link>
+            <Link className="menuOption" to="/create-account">
+              Skapa konto
+            </Link>
           </nav>
         </header>
 
