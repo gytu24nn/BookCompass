@@ -23,6 +23,9 @@ const Layout = () => {
             <Link className="menuOption" to="/create-account">
               Skapa konto
             </Link>
+            <Link className="menuOption" to="/login">
+              Logga in
+            </Link>
           </nav>
         </header>
 
