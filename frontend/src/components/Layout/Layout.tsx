@@ -1,6 +1,15 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 
 const Layout = () => {
+  const navigate = useNavigate();
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    navigate("/")
+  }
+
+
   return (
     <div id="wrapper">
         <header>
@@ -20,12 +29,27 @@ const Layout = () => {
             <Link className="menuOption" to="/inspiration">
               <i className="fa-solid fa-paintbrush"></i>Inspiration
             </Link>
-            <Link className="menuOption" to="/create-account">
-              Skapa konto
-            </Link>
-            <Link className="menuOption" to="/login">
-              Logga in
-            </Link>
+
+            {/*Visa alternativ beroende på om användaren är inloggad eller inte */}
+            {loggedInUser ? (
+              <>
+                <button className="menuOption" onClick={handleLogout} >Logout</button>
+                <span>Välkommen, {loggedInUser}!</span>
+                
+              </>
+              
+            ) : (
+              <>
+              <Link className="menuOption" to="/create-account">
+                Skapa konto
+              </Link>
+              <Link className="menuOption" to="/login">
+                Logga in
+              </Link>
+              </>
+            )}
+
+
           </nav>
         </header>
 
