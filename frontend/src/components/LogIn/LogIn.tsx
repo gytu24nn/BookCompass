@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
-    const [email, setEmail] = useState("");
+    const [identifierInput, setIdentifierInput] = useState(""); // username eller email
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
@@ -12,10 +12,12 @@ const LogIn = () => {
         const storedData = localStorage.getItem("user");
     
         if(storedData) {
-            const userData = JSON.parse(storedData); // Detta borde nu fungera korrekt
+            const userData = JSON.parse(storedData);
+
+            const isMatch = (identifierInput === userData.email || identifierInput === userData.username)
     
-            if(userData.email === email) {
-                localStorage.setItem("loggedInUser", email);
+            if(isMatch) {
+                localStorage.setItem("loggedInUser", userData.username);
                 navigate("/");
             } else {
                 alert("Fel användarnamn eller lösenord.");
@@ -24,20 +26,17 @@ const LogIn = () => {
             alert("Inget konto hittades.");
         }
     }
-    
-    
-
     return(
         <>
             <div>
                 <h1>Login:</h1>
                 <form onSubmit={handleLogin}>
-                    <label htmlFor="emailLoginInput">Email:</label>
+                    <label htmlFor="emailLoginInput">Email/Username:</label>
                     <input 
                         type="text"
                         id="emailLoginInput"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)} 
+                        value={identifierInput}
+                        onChange={(e) => setIdentifierInput(e.target.value)} 
                         required
                     />
                     
