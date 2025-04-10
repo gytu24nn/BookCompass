@@ -177,3 +177,74 @@ footer {
   color: #462F20;
   border-top: 2px solid #ddd;
 }
+
+/*design för skapa konto och logga in form*/
+#spinningWheelLoading {
+  margin-top: 20px;
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+  border: 5px solid #f4d7c4;
+  border-top: 5px solid #462F20;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+.accountCreatedContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.formContainerLoginCreateAccount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: hsla(0, 0%, 95%);
+  padding: 30px;
+  margin: 40px auto;
+  border-radius: 40px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  font-family: "Oswald", sans-serif;
+}
+
+.formContainerLoginCreateAccount input {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 20px;
+  border-color: #462F20;
+  border: solid 2px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 16px;
+  background-color: hsla(0, 0%, 95%);
+  color: #462F20; /* Mörk text för input */
+}
+
+.formContainerLoginCreateAccount button {
+  background-color: #725046;
+  color: #ddd;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.formContainerLoginCreateAccount button:hover {
+  background-color: #462F20;
+}
+
+.formContainerLoginCreateAccount label, .formContainerLoginCreateAccount h1 {
+  background-color: hsla(0, 0%, 95%) !important;
+}

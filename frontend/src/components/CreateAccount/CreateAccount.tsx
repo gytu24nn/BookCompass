@@ -24,7 +24,7 @@ const CreateAccount = () => {
         if(accountCreated) {
             const timer = setTimeout(() => {
                 navigate("/login")
-            }, (3000));
+            }, (2000));
 
             return () => clearTimeout(timer)
         }
@@ -32,15 +32,20 @@ const CreateAccount = () => {
     }, [accountCreated, navigate])
     
     return(
-        <>
-            <h1>Skapa konto:</h1>
+        <div >
+            
 
             {accountCreated ? (
-                <p>
-                    Ditt konto har skapats. Du blir nu skickad till inloggningssidan... 
-                </p>
+                <div className="accountCreatedContainer">
+                    <div id="spinningWheelLoading"></div>
+                    <p>
+                        Ditt konto har skapats. Du blir nu skickad till inloggningssidan... 
+                    </p>
+                </div>
+                
             ) : (
-                <form onSubmit={handleCreateAccount}>
+                <form onSubmit={handleCreateAccount} className="formContainerLoginCreateAccount">
+                    <h1>Skapa konto:</h1>
                     <label htmlFor="usernameCreateAccountInput">Username:</label>
                     <input 
                         id="usernameCreateAccountInput"
@@ -75,7 +80,7 @@ const CreateAccount = () => {
             )}
 
                 
-        </>
+        </div>
     )
 }
 
