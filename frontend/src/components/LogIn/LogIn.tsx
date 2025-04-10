@@ -27,10 +27,10 @@ const LogIn = () => {
         }
     }
     return(
-        <>
-            <div>
-                <h1>Login:</h1>
-                <form onSubmit={handleLogin}>
+            <div >
+                
+                <form onSubmit={handleLogin} className="formContainerLoginCreateAccount">
+                    <h1>Login:</h1>
                     <label htmlFor="emailLoginInput">Email/Username:</label>
                     <input 
                         type="text"
@@ -51,7 +51,6 @@ const LogIn = () => {
                     <button type="submit">Login</button>
                 </form>
             </div>
-        </>
     )
 }
 
