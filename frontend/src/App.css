@@ -20,6 +20,11 @@ main {
   flex: 1; /* Gör att main växer och trycker ner footern */
 }
 
+/*Design för home page*/
+.homePageHeader {
+  text-align: center;
+  margin-top: 2rem;
+}
 
 /*Design för meny*/
 .menuOption {
@@ -63,7 +68,7 @@ main {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: whitesmoke;
+  background-color: hsla(0, 0%, 90%);
   margin-top: 2em;
 }
 
@@ -73,11 +78,11 @@ main {
   color: #462F20;
   text-align: center;
   margin-bottom: 20px;
-  background-color: whitesmoke;
+  background-color: hsla(0, 0%, 90%);
 }
 
 .inspoImg {
-  background-color: whitesmoke;
+  background-color: hsla(0, 0%, 90%);
   text-align: center;
   display: flex;
   flex-wrap: wrap;
@@ -99,7 +104,7 @@ main {
   line-height: 1.6;
   color: #462F20;
   text-align: justify;
-  background-color: whitesmoke;
+  background-color: hsla(0, 0%, 90%);
 }
 
 /*Design för header*/
@@ -175,7 +180,7 @@ footer {
   padding-top: 10px;
   font-size: 12px;
   color: #462F20;
-  border-top: 2px solid #ddd;
+  border-top: 1px solid #462F20;
 }
 
 /*design för skapa konto och logga in form*/
@@ -209,7 +214,7 @@ footer {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: hsla(0, 0%, 95%);
+  background-color: hsla(0, 0%, 90%);
   padding: 30px;
   margin: 40px auto;
   border-radius: 40px;
@@ -227,7 +232,7 @@ footer {
   width: 100%;
   max-width: 300px;
   font-size: 16px;
-  background-color: hsla(0, 0%, 95%);
+  background-color: hsla(0, 0%, 90%);
   color: #462F20; /* Mörk text för input */
 }
 
@@ -246,5 +251,10 @@ footer {
 }
 
 .formContainerLoginCreateAccount label, .formContainerLoginCreateAccount h1 {
-  background-color: hsla(0, 0%, 95%) !important;
+  background-color: hsla(0, 0%, 90%) !important;
+}
+
+.errorMessage {
+  background-color: hsla(0, 0%, 90%);
+  color: red;
 }

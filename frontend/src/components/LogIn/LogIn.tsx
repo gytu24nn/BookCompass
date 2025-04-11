@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const LogIn = () => {
     const [identifierInput, setIdentifierInput] = useState(""); // username eller email
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = (e: React.FormEvent) => {
@@ -14,16 +15,18 @@ const LogIn = () => {
         if(storedData) {
             const userData = JSON.parse(storedData);
 
-            const isMatch = (identifierInput === userData.email || identifierInput === userData.username)
+            const isMatch = (identifierInput === userData.email || identifierInput === userData.username) &&
+                password === userData.password;
     
             if(isMatch) {
                 localStorage.setItem("loggedInUser", userData.username);
                 navigate("/");
+                setErrorMessage("");
             } else {
-                alert("Fel användarnamn eller lösenord.");
+                setErrorMessage("Wrong username or password! Try again!")
             }
         } else {
-            alert("Inget konto hittades.");
+            setErrorMessage("Your account doesn´t exist. Try to create a account first!")
         }
     }
     return(
@@ -31,10 +34,12 @@ const LogIn = () => {
                 
                 <form onSubmit={handleLogin} className="formContainerLoginCreateAccount">
                     <h1>Login:</h1>
+                    {errorMessage && <p className="errorMessage">{errorMessage}</p>}
                     <label htmlFor="emailLoginInput">Email/Username:</label>
                     <input 
                         type="text"
                         id="emailLoginInput"
+                        placeholder="Enter your username or email..."
                         value={identifierInput}
                         onChange={(e) => setIdentifierInput(e.target.value)} 
                         required
@@ -44,6 +49,7 @@ const LogIn = () => {
                     <input 
                         type="password" 
                         id="passwordLoginInput"
+                        placeholder="Enter your password..."
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
