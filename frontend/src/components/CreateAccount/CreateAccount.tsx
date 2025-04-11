@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const CreateAccount = () => {
     const [emailInput, setEmailInput] = useState("");
     const [usernameInput, setUsernameInput] =useState("");
-    const [passwordInput, setPasswordInput] = useState(""); //används inte just nu
+    const [passwordInput, setPasswordInput] = useState(""); 
     const [accountCreated, setAccountCreated] = useState(false);
     const navigate = useNavigate();
 
@@ -13,7 +13,8 @@ const CreateAccount = () => {
 
         const user = {
             email: emailInput,
-            username: usernameInput
+            username: usernameInput,
+            password: passwordInput
         };
 
         localStorage.setItem("user", JSON.stringify(user));

@@ -8,7 +8,7 @@ Detta krav är uppfyllt eftersom jag använt Vite som bundler när jag startade 
 ## Krav 2: React-trädet som renderas ska bestå av minst 5 komponenter som du skrivit själv och som finns med i källkoden:
 Detta krav hade jag ej löst när jag började med denna inlämning utan hade då bra fyra komponenter. Men för att klara det började jag fundera på vad för saker jag behöver för framtida grejer till min applikation. Kom då på att jag vill att användaren ska kunna skapa konto och logga in, bestämde mig då för att göra det till mitt projekt. Jag löste de igenom att jag skapade två mappar till i min components mapp. Dessa två mappar blev CreateAccount och Login i dessa skapade jag varsin TSX fil. 
 
-Båda två filerna är uppbyggda väldigt lika, båda har var sitt form i sig. I create account så sparas de användaren fyllt i formuläret i localstorage, just nu sparas bara användarnamn medan lösenordet ska jag spara sedan när jag skapar en databas. I då login så skriver användaren in de den vill logga in mer och då kontrolleras det som skrivits in med de som finns sparat i localstorage.
+Båda två filerna är uppbyggda väldigt lika, båda har var sitt form i sig. I create account så sparas de användaren fyllt i formuläret i localstorage. I då login så skriver användaren in de den vill logga in mer och då kontrolleras det som skrivits in med de som finns sparat i localstorage.
 
 ## Krav 3: Dina React komponenter är skriva med JSX syntaxen: 
 Detta krav har jag klarat av genom att mina komponenter är skriva i .tsx vilket är typescript versionen av JSX. Syntaxen är nästan samma men med typning tillagd. 

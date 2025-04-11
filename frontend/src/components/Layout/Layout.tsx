@@ -30,28 +30,22 @@ const Layout = () => {
           <Link className="menuOption" to="/affärsplan">
             <i className="fa-solid fa-coins"></i>Affärsplan
           </Link>
-          <Link className="menuOption" to="/projektidé">
-            <i className="fa-solid fa-lightbulb"></i>Projektidé
-          </Link>
-          <Link className="menuOption" to="/inspiration">
-            <i className="fa-solid fa-paintbrush"></i>Inspiration
-          </Link>
 
           {/* Visa alternativ beroende på om användaren är inloggad eller inte */}
           {loggedInUser ? (
             <>
               <button className="menuOption" onClick={handleLogout}>
-                Logout
+                <i className="fa-solid fa-user"></i>Logout
               </button>
               <span>Välkommen, {loggedInUser}!</span>
             </>
           ) : (
             <>
               <Link className="menuOption" to="/create-account">
-                Skapa konto
+                <i className="fa-solid fa-user"></i>Skapa konto
               </Link>
               <Link className="menuOption" to="/login">
-                Logga in
+                <i className="fa-solid fa-user"></i>Logga in
               </Link>
             </>
           )}
