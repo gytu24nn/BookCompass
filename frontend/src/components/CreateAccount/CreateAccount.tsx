@@ -2,11 +2,15 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CreateAccount = () => {
+    // Här skapas alla useStates som behövs för att en användare ska kunna skapa ett konto
     const [emailInput, setEmailInput] = useState("");
     const [usernameInput, setUsernameInput] =useState("");
     const [passwordInput, setPasswordInput] = useState(""); 
     const [accountCreated, setAccountCreated] = useState(false);
     const navigate = useNavigate();
+
+    // Det skapas då en user-variabel som samlar in all information från formuläret
+    // och sparar det i localStorage med nyckeln "user"
 
     const handleCreateAccount = (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,7 +24,9 @@ const CreateAccount = () => {
         localStorage.setItem("user", JSON.stringify(user));
         setAccountCreated(true);
     }
-
+    
+        //När setAccountCreated blir true så aktiveras denna useEffect och den startar en timer på 2 sekunder och när 2 sekunder varit skickas användaren vidare till
+        //login. Däremot om användaren väljer att byta sidan innan de 2 sekunderna avbryts timern för att användaren ej ska förflyttas om den ej vill de.   
     useEffect(() => {
         if(accountCreated) {
             const timer = setTimeout(() => {
@@ -35,7 +41,10 @@ const CreateAccount = () => {
     return(
         <div >
             
-
+            {/*
+                Här gör jag en kort if sats som skriver kollar om kontot skapat och om det har de så visas denna text med en spinningwheel. 
+                Om accountCreated inte ändrat eller då är false så visas istället formuläret för att skapa konto. 
+            */}
             {accountCreated ? (
                 <div className="accountCreatedContainer">
                     <div id="spinningWheelLoading"></div>
@@ -48,6 +57,7 @@ const CreateAccount = () => {
                 <form onSubmit={handleCreateAccount} className="formContainerLoginCreateAccount">
                     <h1>Skapa konto:</h1>
                     <label htmlFor="usernameCreateAccountInput">Username:</label>
+                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
                     <input 
                         id="usernameCreateAccountInput"
                         type="text"
@@ -58,6 +68,7 @@ const CreateAccount = () => {
                     />
 
                     <label htmlFor="emailCreateAccountInput">Email:</label>
+                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
                     <input 
                         id="emailCreateAccountInput"
                         type="text"
@@ -68,6 +79,7 @@ const CreateAccount = () => {
                     />
                 
                     <label htmlFor="passwordCreateAccountInput">Password:</label>
+                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
                     <input 
                         id="passwordCreateAccountInput"
                         type="password"
@@ -76,6 +88,7 @@ const CreateAccount = () => {
                         onChange={(e) => setPasswordInput(e.target.value)}
                         required 
                     />
+                    {/*Knapp med submit som en kopplat till <form> med hjälp av onSubmit därför viktigt med submit type på type på knappen*/}
                     <button type="submit">Create account</button>
                 </form>  
             )}
