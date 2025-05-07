@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import './App.css'
 import Layout from './components/Layout/Layout';
-import Affärsplan from './components/menuOptions/menyval1Affärsplanen/Affärsplanen';
+import Affärsplan from './components/menuOptions/Affärsplanen';
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import LogIn from "./components/LogIn/LogIn";
+import HomePage from "./components/menuOptions/Home-page";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             <Route path='/' element={<Layout />}>
 
               {/*Startsida: visas när använder går till /*/}
-              <Route index element={<h2 className="homePageHeader">Welcome to BookCompass</h2>} /> 
+              <Route index element={<HomePage />} /> 
 
               {/*sida för affärsplanen visas när man går till /affärsplan (kommer bytas ut senare till något annat passande för bookcompass)*/}
               <Route path='affärsplan' element={<Affärsplan />} />
