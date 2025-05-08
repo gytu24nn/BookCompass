@@ -40,9 +40,8 @@ node_modules
 
 # Build-kataloger
 
-bin/
-
 obj/
+bin/
 
 Debug/
 
