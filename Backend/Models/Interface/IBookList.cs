@@ -1,0 +1,16 @@
+
+public interface IBookList
+{
+    long Id { get; set; }
+    string  BookName { get; set; }
+    string BookDescription { get; set; }
+    string ImageUrl { get; set; }
+    string Author { get; set; }
+    int ReleaseYear { get; set; }
+    string Publisher { get; set; }
+    long CategoryId { get; set; }
+
+    ICategory Category { get; set; }
+    List<IBookLanguages> Languages { get; set; }
+
+}
