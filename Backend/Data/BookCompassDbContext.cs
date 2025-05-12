@@ -35,7 +35,7 @@ public class BookCompassDbContext : DbContext
             Id = 1,
             BookName = "A good girl's handbook of murder",
             BookDescription = " It's been five years since schoolgirl Andie Bell was murdered... Pip Fitz-Amobi reopens a closed murder case for her school project, believing the accused may be innocent. As she digs deeper, she uncovers secrets that put her own life at risk.",
-            ImageUrl = "",
+            ImageUrl = "/img/a-good-girls-guide-to-murder.jpg",
             Author = "Holly Jackson",
             CategoryId = 1
         },
@@ -44,7 +44,7 @@ public class BookCompassDbContext : DbContext
             Id = 2,
             BookName = "The morning star",
             BookDescription = "It is late August, the last trembling days of the summer vacation... A mysterious star appears in the sky above Sørlandet, baffling everyone. As life resumes, strange and unsettling events begin to unfold, hinting at dark forces at play.",
-            ImageUrl = "",
+            ImageUrl = "/img/morgonstjarnan.jpg",
             Author = "Karl Ove Knausgård",
             CategoryId = 1
         },
@@ -53,7 +53,7 @@ public class BookCompassDbContext : DbContext
             Id = 3,
             BookName = "Heartstopper part 1",
             BookDescription = "Charlie and Nick attend the same British boys' school... Charlie falls for his new classmate Nick, unsure if the feelings are mutual. Their friendship soon deepens into something more in this heartwarming story of love and identity.",
-            ImageUrl = "",
+            ImageUrl = "/img/heartstopper-bok-1.jpg",
             Author = "Alice Oseman",
             CategoryId = 1
         },
@@ -62,7 +62,7 @@ public class BookCompassDbContext : DbContext
             Id = 4,
             BookName = "The Circle",
             BookDescription = "Six teenage girls discover they are witches and must unite to fight an ancient evil.",
-            ImageUrl = "",
+            ImageUrl = "/img/cirkeln.jpg",
             Author = "Mats Strandberg & Sara B. Elfgren",
             CategoryId = 1
         },
@@ -71,7 +71,7 @@ public class BookCompassDbContext : DbContext
             Id = 5,
             BookName = "The Girl with the Dragon Tattoo",
             BookDescription = "Journalist Blomkvist and hacker Lisbeth Salander investigate a forty-year-old disappearance.",
-            ImageUrl = "",
+            ImageUrl = "/img/9781529432398_383x_girl-with-the-dragon-tattoo_haftad.jpg",
             Author = "Stieg Larsson",
             CategoryId = 2
         },
@@ -80,7 +80,7 @@ public class BookCompassDbContext : DbContext
             Id = 6,
             BookName = "The Girl on the Train",
             BookDescription = "Rachel sees something from the train window that changes everything. But what did she really see?",
-            ImageUrl = "",
+            ImageUrl = "/img/9781784161101_383x_the-girl-on-the-train_pocket.jpg",
             Author = "Paula Hawkins",
             CategoryId = 2
         },
@@ -89,7 +89,7 @@ public class BookCompassDbContext : DbContext
             Id = 7,
             BookName = "A Nearly Normal Family",
             BookDescription = "A teenage girl is arrested for murder. The family’s perfect facade begins to crack. How far would you go to protect your family? And how well do you really know your children?",
-            ImageUrl = "",
+            ImageUrl = "/img/9789137509518_383x_en-helt-vanlig-familj_pocket.jpg",
             Author = "Mattias Edvardsson",
             CategoryId = 2
         },
@@ -98,7 +98,7 @@ public class BookCompassDbContext : DbContext
             Id = 8,
             BookName = "Harry Potter and the Philosopher’s Stone Part 1",
             BookDescription = "Harry discovers he is a wizard and begins his journey at Hogwarts – a magical adventure begins.",
-            ImageUrl = "",
+            ImageUrl = "/img/9789129723946_medium_harry-potter-och-de-vises-sten.jpg",
             Author = "J.K. Rowling",
             CategoryId = 3
         },
@@ -107,7 +107,7 @@ public class BookCompassDbContext : DbContext
             Id = 9,
             BookName = "Taken by the mountains",
             BookDescription = "A student disappears from Järvhöga Läroverk... A student vanishes from a remote Swedish boarding school, sparking investigations and rumors. Julia, a bored local high schooler, joins the search and uncovers dark secrets about the school's past.",
-            ImageUrl = "",
+            ImageUrl = "/img/9789129731323_383x_bergtagen_pocket.jpg",
             Author = "Camilla Sten",
             CategoryId = 3
         },
@@ -116,7 +116,7 @@ public class BookCompassDbContext : DbContext
             Id = 10,
             BookName = "Stardust",
             BookDescription = "Tristran ventures into a magical world to retrieve a fallen star for his beloved – but the world is full of dangers.",
-            ImageUrl = "",
+            ImageUrl = "/img/9789180202020_383x_stardust_hardback.jpg",
             Author = "Neil Gaiman",
             CategoryId = 3
         },
@@ -125,7 +125,7 @@ public class BookCompassDbContext : DbContext
             Id = 11,
             BookName = "The Children of Odin Part 1",
             BookDescription = "Imagine missing something that everyone else has. Something that shows you belong in this world.",
-            ImageUrl = "",
+            ImageUrl = "/img/9789180202037_383x_barnen-ur-odin.jpg",
             Author = "Siri Pettersen",
             CategoryId = 3
         }
