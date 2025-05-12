@@ -10,6 +10,6 @@ public class BookList : IBookList
 
     public long CategoryId { get; set; }
 
-    public ICategory Category { get; set; }
-    public List<IBookLanguages> Languages { get; set; } = new List<IBookLanguages>();
+    public Category Category { get; set; }
+    public List<BookLanguages> Languages { get; set; } = new List<BookLanguages>();
 }

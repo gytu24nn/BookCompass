@@ -10,7 +10,7 @@ public interface IBookList
     int? SeriesPart { get; set; }
     long CategoryId { get; set; }
 
-    ICategory Category { get; set; }
-    List<IBookLanguages> Languages { get; set; }
+    Category Category { get; set; }
+    List<BookLanguages> Languages { get; set; }
 
 }
