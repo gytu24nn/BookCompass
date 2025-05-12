@@ -6,8 +6,8 @@ public interface IBookList
     string BookDescription { get; set; }
     string ImageUrl { get; set; }
     string Author { get; set; }
-    int ReleaseYear { get; set; }
-    string Publisher { get; set; }
+    string? SeriesName { get; set; }
+    int? SeriesPart { get; set; }
     long CategoryId { get; set; }
 
     ICategory Category { get; set; }
