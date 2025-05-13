@@ -136,6 +136,10 @@ public class BookCompassDbContext : DbContext
         .WithMany(b => b.Languages)
         .HasForeignKey(bl => bl.BookId);
 
+    modelBuilder.Entity<BookLanguages>()
+    .HasKey(bl => new { bl.BookId, bl.LanguageId });
+
+
     modelBuilder.Entity<BookLanguages>().HasData(
         //A good girls handbook of murder
         new BookLanguages { LanguageId = 1, Languages = "English", BookId = 1 },
