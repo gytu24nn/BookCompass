@@ -10,12 +10,17 @@ public class BookCompassDbContext : DbContext
     public DbSet<BookList> BookLists { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<BookLanguages> BookLanguages { get; set; }
-
     public DbSet<User> Users { get; set; }
+    public DbSet<UserBook> UserBooks { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<UserBook>()
+        .HasOne(ub => ub.Books)
+        .WithMany()
+        .HasForeignKey(ub => ub.BookId);
 
         // Seed data for categories
         modelBuilder.Entity<Category>().HasData(

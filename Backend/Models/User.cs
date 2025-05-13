@@ -5,4 +5,6 @@ public class User
     public string userName { get; set; } = string.Empty;
     public string email { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
+
+    public List<UserBook> UserBooks { get; set; }
 }
