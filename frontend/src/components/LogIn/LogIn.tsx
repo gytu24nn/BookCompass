@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
     //här skapas useState för att användaren ska kunna logga in
-    const [identifierInput, setIdentifierInput] = useState(""); // username eller email
+    const [userNameInput, setUserNameInput] = useState(""); // username eller email
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(""); // Visar felmeddelande vid fel
+    const [isLoading, setIsLoading] = useState(false); // Visar laddningsindikator
     const navigate = useNavigate(); //för att kunna programmera navigering
 
     /*
@@ -15,28 +16,46 @@ const LogIn = () => {
         - Om uppgifterna stämmer sparas användaren som inloggad och skickas till startsidan
         - Annars visas ett relevant felmeddelande
     */
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-    
-        const storedData = localStorage.getItem("user");
-    
-        if(storedData) {
-            const userData = JSON.parse(storedData);
+        setIsLoading(true); // Sätter isLoading till true för att visa laddningsindikator
+        
 
-            const isMatch = (identifierInput === userData.email || identifierInput === userData.username) &&
-                password === userData.password;
-    
-            if(isMatch) {
-                localStorage.setItem("loggedInUser", userData.username); //Sparar vem som är inloggad i localstorage med username
-                navigate("/"); //skickar användaren till startsidan/home
-                setErrorMessage(""); //nollställer felmeddelandet. 
-            } else {
-                setErrorMessage("Wrong username or password! Try again!")
-            }
-        } else {
-            setErrorMessage("Your account doesn´t exist. Try to create a account first!")
+        if(!userNameInput || !password) {
+            setErrorMessage("All fields are required! try again");
+            return;
         }
+
+        try {
+           const result = await fetch("http://localhost:5175/api/Auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer 1234BookCompassToken",
+                },
+                body: JSON.stringify({
+                    userName: userNameInput,
+                    password: password
+                }),
+            });
+
+            if(result.ok) {
+                const data = await result.json();
+                localStorage.setItem("loggedInUser", userNameInput);
+                navigate("/");
+                setErrorMessage("");
+            } else {
+                const error = await result.json();
+                setErrorMessage(error.message || "wrong username or password! try again");
+            } 
+        } catch (error) {
+            console.error(error);
+            setErrorMessage("An error occurred while logging in. Please try again later!");
+        }
+    
+        
     }
+
     return(
             <div >
                 
@@ -45,14 +64,14 @@ const LogIn = () => {
                     {/* Visar felmeddelande om något blivit fel */}
                     {errorMessage && <p className="errorMessage">{errorMessage}</p>}
                     
-                    <label htmlFor="emailLoginInput">Email/Username:</label>
+                    <label htmlFor="emailLoginInput">Username:</label>
                     {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
                     <input 
                         type="text"
                         id="emailLoginInput"
-                        placeholder="Enter your username or email..."
-                        value={identifierInput}
-                        onChange={(e) => setIdentifierInput(e.target.value)} 
+                        placeholder="Enter your username..."
+                        value={userNameInput}
+                        onChange={(e) => setUserNameInput(e.target.value)} 
                         required
                     />
                     
@@ -66,7 +85,9 @@ const LogIn = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                    <button type="submit">Login</button>
+                    <button type="submit" disabled={isLoading}>
+                        {isLoading ? "Logging in..." : "Log in"}
+                    </button>
                 </form>
             </div>
     )
