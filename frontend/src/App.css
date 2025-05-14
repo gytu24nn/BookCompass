@@ -258,3 +258,66 @@ footer {
   background-color: hsla(0, 0%, 90%);
   color: red;
 }
+
+/*Design för home-page*/
+
+.displayBooks {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 24px;
+  padding: 20px 0;
+  margin: 40px;
+}
+
+.bookCard {
+  flex: 0 0 auto;
+  width: 160px;
+  text-align: center;
+  list-style: none;
+}
+
+.bookCard a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bookImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease-in-out;
+}
+
+.bookImage:hover {
+  transform: scale(1.05);
+}
+
+.bookInfo {
+  margin-top: 10px;
+}
+
+.bookTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.bookAuthor {
+  font-size: 14px;
+  color: #462F20;
+  margin: 4px 0 0;
+}
+
+.categorySection {
+  padding: 0 2%; 
+  margin-bottom: -40px;
+
+}
+
+.categoryName {
+  margin-bottom: -40px;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
