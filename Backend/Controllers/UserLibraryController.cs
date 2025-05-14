@@ -23,28 +23,37 @@ namespace Backend.Controllers
             if(!Request.Headers.TryGetValue("Authorization", out var tokenHeader)
                 || !Request.Headers.TryGetValue("X-User-Name", out var userNameHeader))
             {
-                return Unauthorized(new {message = "Token eller användarnamn saknas."});
+                return Unauthorized(new {message = "Token or username is missing."});
             }
 
             var token = tokenHeader.ToString().Replace("Bearer ", "");
             if(token != TokenAPI)
             {
-                return Unauthorized(new {message = "Felaktig token."});
+                return Unauthorized(new {message = "Invalid token."});
             }
 
             var user = await _context.Users.FirstOrDefaultAsync(u => u.userName == userBookDto.UserName);
 
             if(user == null)
             {
-                return NotFound(new {message = "Användaren hittades inte."});
+                return NotFound(new {message = "User not found."});
             }
 
-            var alreadyExists = await _context.UserBooks
-                .AnyAsync(ub => ub.UserId == user.id && ub.BookId == userBookDto.BookId && ub.ListType == userBookDto.ListType);
+            var existingEntry = await _context.UserBooks
+                .FirstOrDefaultAsync(ub => ub.UserId == user.id && ub.BookId == userBookDto.BookId);
 
-            if(alreadyExists)
+            if(existingEntry != null)
             {
-                return Conflict(new {message = "Boken finns redan i din lista."});
+                // Om samma lista, ge felmeddelande
+                if (existingEntry.ListType == userBookDto.ListType)
+                {
+                    return Conflict(new { message = $"The book is already in the '{userBookDto.ListType}' list." });
+                }
+
+                existingEntry.ListType = userBookDto.ListType;
+                _context.UserBooks.Update(existingEntry);
+                await _context.SaveChangesAsync();
+                return Ok(new { message = $"Book moved to '{userBookDto.ListType}' list." });
             }
 
             var userBook = new UserBook
@@ -54,16 +63,11 @@ namespace Backend.Controllers
                 ListType = userBookDto.ListType
             };
 
-            Console.WriteLine($"Lägger till bok: UserId = {userBook.UserId}, BookId = {userBook.BookId}, ListType = {userBook.ListType}");
-            Console.WriteLine($"Sparar bok med ListType: {userBook.ListType}");
-
             _context.UserBooks.Add(userBook);
             await _context.SaveChangesAsync();
             
-            var SavedUserBook = await _context.UserBooks.FirstOrDefaultAsync(ub => ub.UserId == user.id && ub.BookId == userBookDto.BookId);
-            Console.WriteLine($"Sparad bok: UserId = {SavedUserBook.UserId}, BookId = {SavedUserBook.BookId}");
 
-            return Ok(new {message = "Boken har lagt till i din lista."});
+            return Ok(new { message = $"Book added to '{userBookDto.ListType}' list." });
         }
 
         [HttpGet("getMyLibrary/{userName}")]

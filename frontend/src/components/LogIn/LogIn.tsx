@@ -42,6 +42,7 @@ const LogIn = () => {
             if(result.ok) {
                 const data = await result.json();
                 localStorage.setItem("loggedInUser", userNameInput);
+                localStorage.setItem("token", "1234BookCompassToken");
                 navigate("/");
                 setErrorMessage("");
             } else {
