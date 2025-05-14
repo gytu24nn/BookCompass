@@ -123,7 +123,7 @@ public class BookCompassDbContext : DbContext
             Id = 10,
             BookName = "Stardust",
             BookDescription = "Tristran ventures into a magical world to retrieve a fallen star for his beloved – but the world is full of dangers.",
-            ImageUrl = "/img/9789180202020_383x_stardust_hardback.jpg",
+            ImageUrl = "/img/stardust.jpg",
             Author = "Neil Gaiman",
             CategoryId = 3
         },
@@ -132,7 +132,7 @@ public class BookCompassDbContext : DbContext
             Id = 11,
             BookName = "The Children of Odin Part 1",
             BookDescription = "Imagine missing something that everyone else has. Something that shows you belong in this world.",
-            ImageUrl = "/img/9789180202037_383x_barnen-ur-odin.jpg",
+            ImageUrl = "/img/9789132209666_383x_odinsbarn_pocket.jpg",
             Author = "Siri Pettersen",
             CategoryId = 3
         }
