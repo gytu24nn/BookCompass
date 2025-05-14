@@ -17,6 +17,7 @@ const Layout = () => {
   // Funktion för att logga ut användaren. 
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser"); //Ta bort användarinfo från localstorage.
+    localStorage.removeItem("token"); //Ta bort token från localstorage.
     setLoggedInUser(null); // Uppdaterar loggedInUser userState till null för att visa rätt meny val. 
     navigate("/");  // Navigera till startsidan efter ut loggning. 
   };
@@ -33,8 +34,8 @@ const Layout = () => {
           <Link className="menuOption" to="/">
             <i className="fa-solid fa-house"></i>Home
           </Link>
-          <Link className="menuOption" to="/affärsplan">
-            <i className="fa-solid fa-coins"></i>Affärsplan
+          <Link className="menuOption" to="/MyLibrary">
+            <i className="fa-solid fa-coins"></i>My Library
           </Link>
 
           {/* Visa alternativ beroende på om användaren är inloggad eller inte */}

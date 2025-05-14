@@ -25,3 +25,15 @@ export interface BookDetailDto
     category: string;
     languages: string[];
 }
+
+export interface Book {
+    id: number;
+    bookName: string;
+    author: string;
+    imageUrl: string;
+}
+
+export interface GroupedBooks {
+    listType: string;
+    books: Book[];
+}
