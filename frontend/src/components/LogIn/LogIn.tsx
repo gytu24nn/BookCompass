@@ -61,7 +61,7 @@ const LogIn = () => {
             <div >
                 
                 <form onSubmit={handleLogin} className="formContainerLoginCreateAccount">
-                    <h1>Login:</h1>
+                    <h1>Sign in:</h1>
                     {/* Visar felmeddelande om något blivit fel */}
                     {errorMessage && <p className="errorMessage">{errorMessage}</p>}
                     
@@ -86,9 +86,7 @@ const LogIn = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                    <button type="submit" disabled={isLoading}>
-                        {isLoading ? "Logging in..." : "Log in"}
-                    </button>
+                    <button type="submit">Sign in</button>
                 </form>
             </div>
     )
