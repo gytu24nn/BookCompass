@@ -101,7 +101,7 @@ const CreateAccount = () => {
                 
             ) : (
                 <form onSubmit={handleCreateAccount} className="formContainerLoginCreateAccount">
-                    <h1>Skapa konto:</h1>
+                    <h1>Sign up:</h1>
                     {errorMessage && <p className="errorMessage">{errorMessage}</p>}
                     <label htmlFor="usernameCreateAccountInput">Username:</label>
                     {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
@@ -148,7 +148,7 @@ const CreateAccount = () => {
                     />
 
                     {/*Knapp med submit som en kopplat till <form> med hjälp av onSubmit därför viktigt med submit type på type på knappen*/}
-                    <button type="submit">Create account</button>
+                    <button type="submit">Sign up</button>
                 </form>  
             )}
 

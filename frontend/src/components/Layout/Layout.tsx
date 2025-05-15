@@ -35,7 +35,7 @@ const Layout = () => {
             <i className="fa-solid fa-house"></i>Home
           </Link>
           <Link className="menuOption" to="/MyLibrary">
-            <i className="fa-solid fa-coins"></i>My Library
+            <i className="fa-solid fa-bookmark"></i>My Library
           </Link>
 
           {/* Visa alternativ beroende på om användaren är inloggad eller inte */}

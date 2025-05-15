@@ -42,18 +42,20 @@ const HomePage = () => {
         });
 
         const resultData = await result.json();
-        if(result.ok) 
-        {
-            setMessageByBookId(prev => ({
-                ...prev,
-                [bookId]: resultData.message || "Failed to add book to library. Please try again."
-            }));  
-        } else {
-            setMessageByBookId((prev) => ({
-                ...prev,
-                [bookId]: resultData.message || "Failed to add book to library. Please try again."
-            }))
-        }
+        
+        setMessageByBookId(prev => ({
+          ...prev,
+          [bookId]: resultData.message || "Failed to add book to library. Please try again."
+        })); 
+
+        setTimeout(() => {
+          setMessageByBookId(prev => {
+            const updated = { ...prev };
+            delete updated[bookId];
+            return updated;
+          })
+        }, 2000); // Ta bort meddelandet efter 2 sekunder
+        
         
     };
 
@@ -81,17 +83,17 @@ const HomePage = () => {
                     {/*Dropdown och knappar för att välja lista */}
                     {messageByBookId[book.id] && <p>{messageByBookId[book.id]}</p>}
 
-                    <div>
-                        <select
+                    <div className="dropdownContainer">
+                        <select className ="dropdownSelect"
                             value={selectedList[book.id]}
                             onChange={(e) => setSelectedList({...selectedList, [book.id]: e.target.value})}
                         >
-                            <option value="">select a list to add the book to:</option>
+                            <option value="">select a list:</option>
                             <option value="WantToRead">Want to read</option>
                             <option value="Reading">Reading</option>
                             <option value="Read">Read</option>
                         </select>
-                        <button onClick={() => handleAddToLibrary(book.id)}>Add to</button>
+                        <button className="dropdownButton" onClick={() => handleAddToLibrary(book.id)}>Add to</button>
                     </div>
                     
                   </li>

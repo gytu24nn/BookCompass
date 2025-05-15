@@ -29,20 +29,31 @@ const BookDetailPage = () => {
 
     return (
         <>
-            <h2>{bookDetails.bookName}</h2>
-            <img  
-                src={`http://localhost:5175${bookDetails.imageUrl}`} 
-                alt={bookDetails.bookName} 
-            />
-            <p><strong>Book:</strong> {bookDetails.bookName}</p>
-            <p><strong>Author:</strong> {bookDetails.author}</p>
-            <p><strong>Description:</strong> {bookDetails.bookDescription}</p>
+            
+            <div className="bookDetailContainer">
+                <div className="bookDetailImage">
+                    <img  
+                        src={`http://localhost:5175${bookDetails.imageUrl}`} 
+                    alt={bookDetails.bookName} 
+                    />
+                </div>
+                <div className="bookDetailInfo">
+                    <h2>{bookDetails.bookName}</h2>
+                    <p><strong>Author:</strong> {bookDetails.author}</p>
+                    <p><strong>Description:</strong> {bookDetails.bookDescription}</p>
 
-            <p><strong>Category:</strong> {bookDetails.category}</p>
-            <p><strong>Languages:</strong> {bookDetails.languages.join(", ")}</p>
+                    <p><strong>Category:</strong> {bookDetails.category}</p>
+                    <p><strong>Languages:</strong> {bookDetails.languages.join(", ")}</p>
 
-            <button onClick={handleMoveToHomePage}>Home</button>
+                    <button className="backButton" onClick={handleMoveToHomePage}>
+                        ← Back to Home
+                    </button>
 
+                </div>
+           
+
+            </div>
+            
         </>
     )
 }
