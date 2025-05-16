@@ -61,7 +61,6 @@ const HomePage = () => {
 
     return (
       <>
-        <h2 className="homePageHeader">Welcome to BookCompass</h2>
         {categories.map((category) => (
           <div key={category.categoryId} className="categorySection">
             <h2 className="categoryName">{category.categoryName}:</h2>
@@ -81,7 +80,7 @@ const HomePage = () => {
                       </div>
                     </Link>
                     {/*Dropdown och knappar för att välja lista */}
-                    {messageByBookId[book.id] && <p>{messageByBookId[book.id]}</p>}
+                    {messageByBookId[book.id] && <p><strong>{messageByBookId[book.id]}</strong></p>}
 
                     <div className="dropdownContainer">
                         <select className ="dropdownSelect"
