@@ -45,7 +45,7 @@ const Layout = () => {
               <button className="menuOption" onClick={handleLogout}>
                 <i className="fa-solid fa-user"></i>Logout
               </button>
-              <span>Välkommen, {loggedInUser}!</span>
+              <span>Welcome, {loggedInUser}!</span>
             </>
           ) : (
             <>
