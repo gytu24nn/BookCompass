@@ -51,10 +51,10 @@ const Layout = () => {
             <>
               {/*Länkar till skapa konto och logga in visas om användaren inte är inloggad*/}
               <Link className="menuOption" to="/create-account">
-                <i className="fa-solid fa-user"></i>Skapa konto
+                <i className="fa-solid fa-user"></i>Sign up
               </Link>
               <Link className="menuOption" to="/login">
-                <i className="fa-solid fa-user"></i>Logga in
+                <i className="fa-solid fa-user"></i>Sign in
               </Link>
             </>
           )}
