@@ -12,19 +12,19 @@ builder.Services.AddDbContext<BookCompassDbContext>(options => options.UseInMemo
 
 builder.Services.AddCors(options => 
 {
-    options.AddDefaultPolicy(policy => 
-    {
-        policy.WithOrigins("http://localhost:5173")
-        .AllowAnyMethod()
-        .AllowAnyHeader();
-    });
+    options.AddPolicy("AllowFrontend",
+        builder => builder.WithOrigins("http://localhost:5173")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod());
 });
  
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-app.UseCors();
+
+
+app.UseCors("AllowFrontend");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -4,7 +4,7 @@ import Layout from './components/Layout/Layout';
 import MyLibrary from './components/menuOptions/myLibrary';
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import LogIn from "./components/LogIn/LogIn";
-import HomePage from "./components/menuOptions/Home-page";
+import HomePage from "./components/menuOptions/homePageFolder/Home-page";
 import BookDetailPage from "./components/menuOptions/BookDetail-page";
 
 function App() {
