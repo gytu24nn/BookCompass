@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import SignupForm from "./SignupForm";
+import LoadingSpinner from "./LoadingSpinner";
 
 const CreateAccount = () => {
     // Här skapas alla useStates som behövs för att en användare ska kunna skapa ett konto
@@ -17,23 +19,20 @@ const CreateAccount = () => {
     const handleCreateAccount = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        if(passwordInput !== confirmPasswordInput) 
-        {
-            setErrorMessage("passwords do not match! try again");
+        if(passwordInput !== confirmPasswordInput) {
+            setErrorMessage("passwords do not match! Try again");
             return;
         }
 
         // Kontrollera att e-postadressen har ett giltigt format: [något]@[något].[något]
         // Exempelvis: test@example.com – annars visas ett felmeddelande.
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!emailRegex.test(emailInput))
-        {
+        if(!emailRegex.test(emailInput)) {
             setErrorMessage("Invalid email format! try again");
             return;
         }
 
-        if(passwordInput.length < 6)
-        {
+        if(passwordInput.length < 6) {
             setErrorMessage("Password must be at least 6 characters long! try again");
             return;
         }
@@ -92,64 +91,20 @@ const CreateAccount = () => {
                 Om accountCreated inte ändrat eller då är false så visas istället formuläret för att skapa konto. 
             */}
             {accountCreated ? (
-                <div className="accountCreatedContainer">
-                    <div id="spinningWheelLoading"></div>
-                    <p>
-                        Ditt konto har skapats. Du blir nu skickad till inloggningssidan... 
-                    </p>
-                </div>
-                
+                <LoadingSpinner />   
             ) : (
-                <form onSubmit={handleCreateAccount} className="formContainerLoginCreateAccount">
-                    <h1>Sign up:</h1>
-                    {errorMessage && <p className="errorMessage">{errorMessage}</p>}
-                    <label htmlFor="usernameCreateAccountInput">Username:</label>
-                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
-                    <input 
-                        id="usernameCreateAccountInput"
-                        type="text"
-                        placeholder="Enter your username..."
-                        value={usernameInput} 
-                        onChange={(e) => setUsernameInput(e.target.value)}
-                        required
-                    />
-
-                    <label htmlFor="emailCreateAccountInput">Email:</label>
-                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
-                    <input 
-                        id="emailCreateAccountInput"
-                        type="text"
-                        placeholder="Enter your email address..."
-                        value={emailInput} 
-                        onChange={(e) => setEmailInput(e.target.value)} 
-                        required
-                    />
-                
-                    <label htmlFor="passwordCreateAccountInput">Password:</label>
-                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
-                    <input 
-                        className="passwordCreateAccountInput"
-                        type="password"
-                        placeholder="Enter your password..."
-                        value={passwordInput}
-                        onChange={(e) => setPasswordInput(e.target.value)}
-                        required 
-                    />
-
-                    <label htmlFor="confirmPasswordAccountInput">Confirm password:</label>
-                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
-                    <input
-                        className="passwordCreateAccountInput"
-                        type="password"
-                        placeholder="Confirm your password..."
-                        value={confirmPasswordInput}
-                        onChange={(e) => setConfirmPasswordInput(e.target.value)}
-                        required
-                    />
-
-                    {/*Knapp med submit som en kopplat till <form> med hjälp av onSubmit därför viktigt med submit type på type på knappen*/}
-                    <button type="submit">Sign up</button>
-                </form>  
+               <SignupForm 
+                    username={usernameInput}
+                    email={emailInput}
+                    password={passwordInput}
+                    confirmPassword={confirmPasswordInput}
+                    onUsernameChange={(e) => setUsernameInput(e.target.value)}
+                    onEmailChange={(e) => setEmailInput(e.target.value)}
+                    onPasswordChange={(e) => setPasswordInput(e.target.value)}
+                    onConfirmPasswordChange={(e) => setConfirmPasswordInput(e.target.value)}
+                    onSubmit={handleCreateAccount}
+                    errorMessage={errorMessage}
+               />
             )}
 
                 
