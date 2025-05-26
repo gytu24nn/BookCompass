@@ -1,6 +1,6 @@
 import { BookDetailDto } from "../../interfaces";
 import { useState, useEffect } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BookDetailPage = () => {
     const {id} = useParams();

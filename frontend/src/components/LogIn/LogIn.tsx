@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import InputField from "../CreateAccount/InputField";
+import ErrorMessage from "../CreateAccount/ErrorMessage";
 
 const LogIn = () => {
     //här skapas useState för att användaren ska kunna logga in
     const [userNameInput, setUserNameInput] = useState(""); // username eller email
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(""); // Visar felmeddelande vid fel
-    const [isLoading, setIsLoading] = useState(false); // Visar laddningsindikator
     const navigate = useNavigate(); //för att kunna programmera navigering
 
     /*
@@ -18,7 +19,6 @@ const LogIn = () => {
     */
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsLoading(true); // Sätter isLoading till true för att visa laddningsindikator
         
 
         if(!userNameInput || !password) {
@@ -64,27 +64,23 @@ const LogIn = () => {
                     <h1>Sign in:</h1>
                     {/* Visar felmeddelande om något blivit fel */}
                     {errorMessage && <p className="errorMessage">{errorMessage}</p>}
-                    
-                    <label htmlFor="emailLoginInput">Username:</label>
-                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
-                    <input 
+
+                    <InputField 
+                        id="usernameSigninInput"
+                        label="username:"
                         type="text"
-                        id="emailLoginInput"
-                        placeholder="Enter your username..."
                         value={userNameInput}
-                        onChange={(e) => setUserNameInput(e.target.value)} 
-                        required
+                        placeholder="Enter your username..."
+                        onChange={(e) => setUserNameInput(e.target.value)}
                     />
-                    
-                    <label htmlFor="passwordLoginInput">Password:</label>
-                    {/*Här är ett input fält som samlar in den information som skrivs plus att vi uppdaterar userState med de som skrivs in. */}
-                    <input 
-                        type="password" 
-                        id="passwordLoginInput"
-                        placeholder="Enter your password..."
+
+                    <InputField 
+                        id="passwordSigninInput"
+                        label="password:"
+                        type="password"
                         value={password}
+                        placeholder="Enter your password..."
                         onChange={(e) => setPassword(e.target.value)}
-                        required
                     />
                     <button type="submit">Sign in</button>
                 </form>
