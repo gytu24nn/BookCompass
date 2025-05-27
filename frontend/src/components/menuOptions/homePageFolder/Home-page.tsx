@@ -6,7 +6,7 @@ import { fetchCategories, fetchAddToLibrary } from "../../../apiFetch/fetchBooks
 
 const HomePage = () => {
     // TEST: Kasta ett fel med flit för att testa error boundary
-    //throw new Error("Testfel från HomePage");
+    throw new Error("Testfel från HomePage");
 
     const [categories, setCategories] = useState<CategoryWithBooksDto[]>([]);
     const [selectedList, setSelectedList] = useState<{ [bookId: number]: string }>({});
