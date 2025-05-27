@@ -4,6 +4,10 @@ import CategorySection from "./categorySection";
 
 
 const HomePage = () => {
+    // TEST: Kasta ett fel med flit för att testa error boundary
+    //throw new Error("Testfel från HomePage");
+
+
     const [categories, setCategories] = useState<CategoryWithBooksDto[]>([]);
     const [selectedList, setSelectedList] = useState<{ [bookId: number]: string }>({});
     const [messageByBookId, setMessageByBookId] = useState<{ [bookId: number]: string }>({});
