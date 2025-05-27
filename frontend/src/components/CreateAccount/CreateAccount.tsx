@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupForm from "./SignupForm";
 import LoadingSpinner from "./LoadingSpinner";
+import { registerUser } from "../../apiFetch/auth";
 
 const CreateAccount = () => {
     // Här skapas alla useStates som behövs för att en användare ska kunna skapa ett konto
@@ -43,30 +44,11 @@ const CreateAccount = () => {
         }
 
         try {
-            const result = await fetch("http://localhost:5175/api/Auth/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer 1234BookCompassToken"
-                },
-                body: JSON.stringify({
-                    userName: usernameInput,
-                    email: emailInput,
-                    password: passwordInput,
-                    confirmPassword: confirmPasswordInput,
-                }),
-            });
+            await registerUser(usernameInput, emailInput, passwordInput, confirmPasswordInput);
+            setAccountCreated(true);
+            setErrorMessage(""); // Rensa felmeddelandet om kontot skapades framgångsrikt
 
-            if(result.ok) 
-            {
-                setAccountCreated(true);
-                setErrorMessage("");
-            } else {
-                const error = await result.json();
-                setErrorMessage(error.message || "Could not create account");
-            }
-        } catch (error) {
-            console.error(error);
+        } catch (error: any) {
             setErrorMessage("An error occurred while creating the account. try again later!"); 
         }
     };

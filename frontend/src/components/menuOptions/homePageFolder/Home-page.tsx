@@ -1,56 +1,60 @@
 import { CategoryWithBooksDto } from "../../../interfaces";
 import { useState, useEffect } from "react";
 import CategorySection from "./categorySection";
+import { fetchCategories, fetchAddToLibrary } from "../../../apiFetch/fetchBooks";
 
 
 const HomePage = () => {
     // TEST: Kasta ett fel med flit för att testa error boundary
     //throw new Error("Testfel från HomePage");
 
-
     const [categories, setCategories] = useState<CategoryWithBooksDto[]>([]);
     const [selectedList, setSelectedList] = useState<{ [bookId: number]: string }>({});
     const [messageByBookId, setMessageByBookId] = useState<{ [bookId: number]: string }>({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            const result = await fetch("http://localhost:5175/api/Books/categories");
-            const data = await result.json();
-            setCategories(data);
-        };
-        fetchCategories();
+      const getCategories = async () => {
+        try {
+          setLoading(true);
+          const data = await fetchCategories();
+          setCategories(data);
+        } catch (error: any) {
+          setCategories([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+      getCategories();
     }, []);
 
     const handleAddToLibrary = async (bookId: number) => {
-        const listType = selectedList[bookId];
-        const userName = localStorage.getItem("loggedInUser");
-        const token = localStorage.getItem("token");
+      const listType = selectedList[bookId];
+      const userName = localStorage.getItem("loggedInUser");
+      const token = localStorage.getItem("token");
 
-        if(!userName || !token || !listType) {
-            alert("You need to be logged in to add books to your library and select a list.");
-            return;
-        }
+      if (!userName || !token) {
+        alert("You need to be logged in and select a list to add a book.");
+        return;
+      }
 
-        const result = await fetch("http://localhost:5175/api/UserLibrary/addBookToMyLibrary", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`,
-                "X-User-Name": userName,
-            },
-            body: JSON.stringify({
-                bookId,
-                userName,
-                listType
-            }),
-        });
+      if (!listType) {
+        alert("You need to select a list before adding a book.");
+        return;
+      }
 
-        const resultData = await result.json();
-        
+      try {
+        const resultData = await fetchAddToLibrary(bookId, userName, token, listType);
         setMessageByBookId(prev => ({
           ...prev,
-          [bookId]: resultData.message || "Failed to add book to library. Please try again."
-        })); 
+          [bookId]: resultData.message
+        }));
+      } catch (error: any) {
+        setMessageByBookId(prev => ({
+          ...prev,
+          [bookId]: error.message || "Failed to add book to library. Please try again."
+        }));
+      }
 
         setTimeout(() => {
           setMessageByBookId(prev => {
@@ -65,6 +69,7 @@ const HomePage = () => {
 
     return (
       <>
+        {loading && <p className="loadingMessage">Loading...</p>}
         {categories.map(category => (
           <CategorySection 
             key={category.categoryId}
