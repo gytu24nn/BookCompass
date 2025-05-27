@@ -1,27 +1,34 @@
 import { BookDetailDto } from "../../interfaces";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { fetchBookDetail } from "../../apiFetch/fetchBookDetail";
 
 const BookDetailPage = () => {
     const {id} = useParams();
     const navigate = useNavigate(); //för att kunna programmera navigering
     const [bookDetails, setBookDetails] = useState<BookDetailDto | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchBookDetails = async () => {
-            const result = await fetch(`http://localhost:5175/api/Books/${id}`)
-            if (!result.ok) {
-                console.error("Failed to fetch book details:", result.statusText);
-                return;
+        const getBookDetails = async () => {
+            try {
+                setLoading(true);
+                if(id) {
+                    const data = await fetchBookDetail(id);
+                    setBookDetails(data);
+                }
+            } catch (error: any) {
+                setErrorMessage("Could not fetch book details. Please try again later.");
+            } finally {
+                setLoading(false);
             }
-            const data = await result.json();
-            console.log("Fetched book detail:", data); // <--- lägg till denna
-            setBookDetails(data);
         };
-        fetchBookDetails();
+        getBookDetails();
     }, [id]);
 
-    if(!bookDetails) return <p>Loading...</p>;
+    if(!bookDetails) return <p className="loadingMessage">Loading...</p>;
+
 
     const handleMoveToHomePage = () => {
         navigate("/");

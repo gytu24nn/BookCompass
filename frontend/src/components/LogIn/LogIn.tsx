@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputField from "../CreateAccount/InputField";
 import ErrorMessage from "../CreateAccount/ErrorMessage";
+import { loginUser } from "../../apiFetch/auth";
 
 const LogIn = () => {
     //här skapas useState för att användaren ska kunna logga in
@@ -27,34 +28,16 @@ const LogIn = () => {
         }
 
         try {
-           const result = await fetch("http://localhost:5175/api/Auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer 1234BookCompassToken",
-                },
-                body: JSON.stringify({
-                    userName: userNameInput,
-                    password: password
-                }),
-            });
+            await loginUser(userNameInput, password);
+            localStorage.setItem("loggedInUser", userNameInput); // Spara inloggningsstatus i localStorage
+            localStorage.setItem("token", "1234BookCompassToken"); // Spara användarnamn i localStorage
+            navigate("/"); // Om inloggningen lyckas, navigera till startsidan
+            setErrorMessage(""); // Rensa felmeddelandet om inloggningen lyckades
 
-            if(result.ok) {
-                const data = await result.json();
-                localStorage.setItem("loggedInUser", userNameInput);
-                localStorage.setItem("token", "1234BookCompassToken");
-                navigate("/");
-                setErrorMessage("");
-            } else {
-                const error = await result.json();
-                setErrorMessage(error.message || "wrong username or password! try again");
-            } 
-        } catch (error) {
-            console.error(error);
-            setErrorMessage("An error occurred while logging in. Please try again later!");
+        } catch (error : any) {
+            setErrorMessage(error.message || "Wrong username or password! Try again");
         }
-    
-        
+
     }
 
     return(

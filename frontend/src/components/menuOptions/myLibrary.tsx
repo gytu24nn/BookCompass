@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";  // Importera useLocation
 import { GroupedBooks } from "../../interfaces";
+import { fetchUserLibrary } from "../../apiFetch/userLibrary";
 
 const myLibrary = () => {
     const [libraryData, setLibraryData] = useState<GroupedBooks[]>([]);
@@ -19,21 +20,7 @@ const myLibrary = () => {
                     return;
                 }
 
-                const result = await fetch(`http://localhost:5175/api/UserLibrary/getMyLibrary/${userName}`, {
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        "X-User-Name": userName,
-                    }
-                });
-
-                if(!result.ok) 
-                {
-                    const error = await result.json();
-                    setErrorMessage(error.message || "something went wrong. Try again!");
-                }
-
-                const data = await result.json();
-                console.log("Fetched book detail:", data); // <--- lägg till denna
+                const data = await fetchUserLibrary(userName, token);
                 setLibraryData(data);
 
             } catch (err: any) {
