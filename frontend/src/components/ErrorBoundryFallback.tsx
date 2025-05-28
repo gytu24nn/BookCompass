@@ -7,6 +7,8 @@ import { FallbackProps } from "react-error-boundary";
  * Visar ett användarvänligt felmeddelande, en knapp för att försöka igen, valfri titel och ett meddelande som beskriver felet.
  * Loggar även felet till konsolen för felsökning (kan bytas ut till serverloggning vid behov).
  * 
+ * För att kunna använda denna behöver man installer detta paket: "npm install react-error-boundary"
+ * 
  * @param error - Felobjektet som kastats av en barnkomponent.
  * @param resetErrorBoundary - Funktion för att återställa felgränsen och försöka igen.
  * @param title - Valfri titel för felmeddelandet (standard är "Oops! An error occurred.").
