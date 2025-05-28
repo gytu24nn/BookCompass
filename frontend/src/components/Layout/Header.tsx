@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useLocation} from "react-router-dom"
+import { useUser } from "../Context/UserContext";
 
 const Header = () => {
     //state som håller reda på om en användare är inloggad kollas vad de finns för data i localstorage.
     const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
-
+    const {userName, setUserName} = useUser();
     const navigate = useNavigate(); //för att kunna programmera navigering
     const location = useLocation();  // Hämtar aktuell url i appen.
 
@@ -16,7 +17,6 @@ const Header = () => {
 
     // Funktion för att logga ut användaren. 
     const handleLogout = () => {
-        localStorage.removeItem("loggedInUser"); //Ta bort användarinfo från localstorage.
         localStorage.removeItem("token"); //Ta bort token från localstorage.
         setLoggedInUser(null); // Uppdaterar loggedInUser userState till null för att visa rätt meny val. 
         navigate("/");  // Navigera till startsidan efter ut loggning. 
@@ -39,13 +39,13 @@ const Header = () => {
                 </Link>
 
                 {/* Visa alternativ beroende på om användaren är inloggad eller inte */}
-                {loggedInUser ? (
+                {userName ? (
                     <>
                         {/*Logga ut knapp och hälsning visas tillsammans med meny val om användaren är inloggad.*/}
                         <button className="menuOption" onClick={handleLogout}>
                             <i className="fa-solid fa-user"></i>Logout
                         </button>
-                        <span>Welcome, {loggedInUser}!</span>
+                        <span>Welcome, {userName}!</span>
                     </>
                 ) : (
                     <>

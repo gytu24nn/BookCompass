@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputField from "../CreateAccount/InputField";
-import ErrorMessage from "../CreateAccount/ErrorMessage";
 import { loginUser } from "../../apiFetch/auth";
+import { useUser } from "../Context/UserContext";
 
 const LogIn = () => {
     //här skapas useState för att användaren ska kunna logga in
@@ -10,6 +10,7 @@ const LogIn = () => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(""); // Visar felmeddelande vid fel
     const navigate = useNavigate(); //för att kunna programmera navigering
+    const {setUserName} = useUser();
 
     /*
         Den här funktionen körs när användaren försöker logga in.
@@ -29,7 +30,7 @@ const LogIn = () => {
 
         try {
             await loginUser(userNameInput, password);
-            localStorage.setItem("loggedInUser", userNameInput); // Spara inloggningsstatus i localStorage
+            setUserName(userNameInput);
             localStorage.setItem("token", "1234BookCompassToken"); // Spara användarnamn i localStorage
             navigate("/"); // Om inloggningen lyckas, navigera till startsidan
             setErrorMessage(""); // Rensa felmeddelandet om inloggningen lyckades

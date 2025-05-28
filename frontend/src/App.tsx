@@ -8,12 +8,11 @@ import HomePage from "./components/menuOptions/homePageFolder/Home-page";
 import BookDetailPage from "./components/menuOptions/BookDetail-page";
 import ErrorBoundaryFallBack from "./components/ErrorBoundryFallback";
 import { ErrorBoundary } from "react-error-boundary";
+import { UserProvider } from "./components/Context/UserContext";
 
 function App() {
   return (
-    <>
-      <div>
-        {/*här använder jag mig av router för att jag ska kunna ha en meny som användaren kan välja mellan.*/}
+    <UserProvider>        {/*här använder jag mig av router för att jag ska kunna ha en meny som användaren kan välja mellan.*/}
         <Router>
           <ErrorBoundary FallbackComponent={ErrorBoundaryFallBack}>
             <Routes>
@@ -39,8 +38,7 @@ function App() {
             </Routes>
           </ErrorBoundary>
         </Router>
-      </div>
-    </>
+    </UserProvider>
   )
 }
 
