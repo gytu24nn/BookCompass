@@ -238,7 +238,9 @@ In this project, I use Git branches with a clear structure to separate different
 
 - Deploy-inlämning-2: The second branch for the second assignment, for this project. I added login and account creation functionality.
 
-- Backend-inlämning-3: the third branch for the third assignment, for this project. In this branch i have created backend and connected the endpoints I created in the backend with frontend.
+- Backend-inlämning-3: The third branch for the third assignment, for this project. In this branch i have created backend and connected the endpoints I created in the backend with frontend.
+
+- mvp-inlämnung-4: The foruth branch for the fourth assignment, for this project. In this branch i have made som small changes and added error boundary for instance. 
 
 - Live-DigitalOcean: This branch i connected to the public version of the project deployed on DigitalOcean. It is only used for deployment, and it contains the same content as the branch Deploy-inlämning-2.
 
